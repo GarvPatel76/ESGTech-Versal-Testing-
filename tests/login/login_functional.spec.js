@@ -30,9 +30,10 @@ test.describe('B. Login Testing', () => {
       await expect(page).toHaveURL(/.*dashboard/i, { timeout: 15000 });
       
       // Click logout
-      const logoutBtn = page.locator('button:has-text("Logout"), a:has-text("Logout")');
+      const logoutBtn = page.getByRole('button', { name: 'EC ESG Care' });
       if (await logoutBtn.count() > 0) {
-         await logoutBtn.first().click();
+         await logoutBtn.click();
+         await page.getByRole('menuitem', { name: 'Sign Out' }).click();
          await expect(page).toHaveURL(/.*login/i, { timeout: 10000 });
       }
     });

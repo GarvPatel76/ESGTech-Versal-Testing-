@@ -3,8 +3,8 @@ const { test, expect } = require('@playwright/test');
 test.describe('E. Form Testing (Generic)', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/login');
-    await page.fill('#email', 'esgcare@growlity.com');
-    await page.fill('#password', 'nwjJY21XT9x8');
+    await page.getByRole('textbox', { name: 'Email *' }).fill( 'esgcare@growlity.com');
+    await page.getByRole('textbox', { name: 'Password *' }).fill( 'nwjJY21XT9x8');
     await page.click('button:has-text("Sign In")');
     await expect(page).toHaveURL(/.*dashboard/i, { timeout: 15000 });
   });

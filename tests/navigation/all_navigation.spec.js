@@ -7,8 +7,8 @@ test.describe('All Navigation Links Test', () => {
   test('should verify all navigation menu items work correctly', async ({ page }) => {
     // 1. Login to the application
     await page.goto('/login');
-    await page.fill('#email', 'esgcare@growlity.com');
-    await page.fill('#password', 'nwjJY21XT9x8');
+    await page.getByRole('textbox', { name: 'Email *' }).fill( 'esgcare@growlity.com');
+    await page.getByRole('textbox', { name: 'Password *' }).fill( 'nwjJY21XT9x8');
     await page.click('button:has-text("Sign In")');
 
     // Wait for the dashboard to load

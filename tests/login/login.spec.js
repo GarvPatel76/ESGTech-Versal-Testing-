@@ -6,8 +6,8 @@ test.describe('Login Tests', () => {
     await page.goto('/login');
 
     // Fill in the login credentials
-    await page.fill('#email', 'esgcare@growlity.com');
-    await page.fill('#password', 'nwjJY21XT9x8');
+    await page.getByRole('textbox', { name: 'Email *' }).fill( 'esgcare@growlity.com');
+    await page.getByRole('textbox', { name: 'Password *' }).fill( 'nwjJY21XT9x8');
 
     // Click the Sign In button
     await page.click('button:has-text("Sign In")');
