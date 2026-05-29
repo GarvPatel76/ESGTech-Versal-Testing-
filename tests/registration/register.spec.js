@@ -22,7 +22,7 @@ test.describe('C. Registration Testing (Placeholder)', () => {
   });
 
   test('should enforce password validation rules', async ({ page }) => {
-    const passInput = page.locator('input[type="password"]').first();
+    const passInput = page.getByRole('textbox', { name: 'Password *' }).first();
     if (await passInput.count() > 0) {
       // Type a weak password
       await passInput.fill('123');
@@ -37,8 +37,8 @@ test.describe('C. Registration Testing (Placeholder)', () => {
   });
 
   test('should handle duplicate email gracefully', async ({ page }) => {
-    const emailInput = page.locator('input[type="email"]').first();
-    const passInput = page.locator('input[type="password"]').first();
+    const emailInput = page.getByRole('textbox', { name: 'Email *' }).first();
+    const passInput = page.getByRole('textbox', { name: 'Password *' }).first();
     const submitBtn = page.locator('button[type="submit"], button:has-text("Register")');
     
     if (await emailInput.count() > 0 && await passInput.count() > 0 && await submitBtn.count() > 0) {

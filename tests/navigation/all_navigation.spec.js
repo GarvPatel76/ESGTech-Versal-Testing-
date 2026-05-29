@@ -9,7 +9,7 @@ test.describe('All Navigation Links Test', () => {
     await page.goto('/login');
     await page.getByRole('textbox', { name: 'Email *' }).fill( 'esgcare@growlity.com');
     await page.getByRole('textbox', { name: 'Password *' }).fill( 'nwjJY21XT9x8');
-    await page.click('button:has-text("Sign In")');
+    await page.getByRole('button', { name: 'Sign In' }).click();
 
     // Wait for the dashboard to load
     await expect(page).toHaveURL(/.*dashboard/i, { timeout: 15000 });

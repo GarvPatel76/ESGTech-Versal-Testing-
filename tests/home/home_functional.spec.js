@@ -7,7 +7,7 @@ test.describe('A. Home Page Testing', () => {
 
   test('should display logo', async ({ page }) => {
     // Look for common logo selectors
-    const logo = page.locator('img[alt*="logo" i], .logo, #logo').first();
+    const logo = page.locator('img[alt*="ESGtech.ai" i], img[alt*="logo" i], .logo, #logo').first();
     await expect(logo).toBeVisible({ timeout: 10000 });
   });
 

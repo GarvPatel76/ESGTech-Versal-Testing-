@@ -43,7 +43,11 @@ test.describe('9. Basic Security Testing', () => {
     const logoutBtn = page.getByRole('button', { name: 'EC ESG Care' });
     if (await logoutBtn.count() > 0) {
       await logoutBtn.click();
-      await page.getByRole('menuitem', { name: 'Sign Out' }).click();
+      const signOutBtn = page.locator('text=/sign out|logout/i').first();
+      await signOutBtn.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+      if (await signOutBtn.isVisible()) {
+          await signOutBtn.click();
+      }
     }
     
     await expect(page).toHaveURL(/.*login/i, { timeout: 10000 });
